@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import fs from 'fs';
+
 import { createServer } from 'http';
 import { Server } from 'socket.io'
 
@@ -7,8 +9,12 @@ const port = 3443;
 const app = express();
 app.use(cors({ origin: '*' }));
 
-const server = createServer(app);
+const privateKey = fs.readFileSync('key.pem', 'utf8');
+const certificate = fs.readFileSync('cert.pem', 'utf8');
+
+const server = createServer(app, {cert: certificate, key: privateKey});
 const io = new Server(server, {
+  server: server,
   transports: ['websocket', 'polling'],
   cors: { origin: '*' }
 });
