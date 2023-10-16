@@ -7,8 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./server.js",
-    "deploy": "cp -r . //192.168.2.11/opt/rmtR1/cfg/nodejs/app",
-    "createcert": "openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3650 -nodes -subj \"/C=XX/ST=StateName/L=CityName/O=CompanyName/OU=CompanySectionName/CN=CommonNameOrHostname\""
+    "deploy": "cp -ruf {c,k,p,s}* //192.168.2.11/opt/rmtR1/cfg/nodejs/app",
+    "createcert": "openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 3650 -nodes -subj \"/C=XX/ST=UT/L=UT/O=vanbrug/OU=org/CN=wss\""
   },
   "author": "",
   "license": "ISC",
